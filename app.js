@@ -15,7 +15,7 @@ app.use(morgan('combined', { stream: logFileStream }));
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send('Hello, world! ${projectName}');
+  res.send(`Hello, world! ${projectName}`);
 });
 
 // Error handling middleware
