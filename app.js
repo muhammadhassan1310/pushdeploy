@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = 9900;
+const port = process.env.PORT || 3000;
+const projectName = process.env.PROJECT_NAME || 'Default Project';
 
 // Create a write stream (in append mode) for logging
 const logFileStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
@@ -14,7 +15,7 @@ app.use(morgan('combined', { stream: logFileStream }));
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.send('Hello, world! ${projectName}');
 });
 
 // Error handling middleware
@@ -28,5 +29,6 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
+  console.log(`Server is ${projectName} running on port ${port}`);
 });
+  
