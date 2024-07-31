@@ -15,7 +15,7 @@ app.use(morgan('combined', { stream: logFileStream }));
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send(`Hello, world! Hassan Project Name is : ${projectName}`);
+  res.send(`Hello, world! Abu zar Project Name is : ${projectName}`);
 });
 
 // Error handling middleware
